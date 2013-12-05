@@ -1,0 +1,11 @@
+map <leader>f :NERDTreeFind<cr>
+"map <leader>n <plug>NERDTreeTabsToggle<cr>
+map <leader>w :s/\s\+$//<cr>
+map <leader>W :%s/\s\+$//<cr>
+
+color railscasts2
+
+set undodir=~/.janus/undodir
+set undofile
+set undolevels=1000 "maximum number of changes that can be undone
+set undoreload=10000 "maximum number lines to save for undo on a buffer reload
