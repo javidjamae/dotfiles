@@ -3,6 +3,9 @@ map <leader>f :NERDTreeFind<cr>
 map <leader>w :s/\s\+$//<cr>
 map <leader>W :%s/\s\+$//<cr>
 
+"Deselect text by pressing enter after search
+nnoremap <CR> :noh<CR><CR>
+
 color railscasts2
 
 set undodir=~/.janus/undodir
