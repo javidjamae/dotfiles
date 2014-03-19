@@ -1,10 +1,23 @@
+"Find the currently selected file in the NERDTree window
 map <leader>f :NERDTreeFind<cr>
-"map <leader>n <plug>NERDTreeTabsToggle<cr>
+
+"Clear off white space from the end of the current line
 map <leader>w :s/\s\+$//<cr>
+
+"Clear off white space from the end of all lines
 map <leader>W :%s/\s\+$//<cr>
 
 "Deselect text by pressing enter after search
 nnoremap <CR> :noh<CR><CR>
+
+"Make Command-P not send a f@#$ing print job
+map <D-p> :CtrlP<CR>
+imap <D-p> <ESC>:CtrlP<CR>
+
+" http://unix.stackexchange.com/questions/117323/how-do-i-only-undo-pasted-text-in-vim
+" Any text fragment pasted in insert mode should be undone separately, without
+" destroying what was typed before.
+inoremap <C-R> <C-G>u<C-R>
 
 color railscasts2
 
@@ -12,3 +25,5 @@ set undodir=~/.janus/undodir
 set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+
+command! -nargs=1 -range TabFirst exec <line1> . ',' . <line2> . 'Tabularize /^[^' . escape(<q-args>, '\^$.[?*~') . ']*\zs' . escape(<q-args>, '\^$.[?*~')
