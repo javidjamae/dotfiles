@@ -7,8 +7,8 @@ map <leader>w :s/\s\+$//<cr>
 "Clear off white space from the end of all lines
 map <leader>W :%s/\s\+$//<cr>
 
-"Deselect text by pressing enter after search
-nnoremap <CR> :noh<CR><CR>
+"Deselect text
+map <leader>d :noh<CR><CR>
 
 "Make Command-P not send a f@#$ing print job (Not sure this is working though - Javid)
 map <D-p> :CtrlP<CR>
@@ -25,9 +25,5 @@ set undodir=~/.janus/undodir
 set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
-
-" http://stackoverflow.com/questions/11404800/fix-vim-tmux-yank-paste-on-unnamed-register
-" So that clipboard works correctly from tmux
-set clipboard=unnamed
 
 command! -nargs=1 -range TabFirst exec <line1> . ',' . <line2> . 'Tabularize /^[^' . escape(<q-args>, '\^$.[?*~') . ']*\zs' . escape(<q-args>, '\^$.[?*~')
