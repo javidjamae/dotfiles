@@ -1,1 +1,7 @@
 color railscasts2
+
+" Remap mvim paste so that it allows undo
+macmenu Edit.Paste key=<nop>
+noremap <D-v> "*P
+cnoremap <D-v> <C-r>*
+inoremap <D-v> <C-g>u<C-r>*

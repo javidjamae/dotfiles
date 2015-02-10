@@ -8,7 +8,6 @@ map <leader>w :s/\s\+$//<cr>
 map <leader>W :%s/\s\+$//<cr>
 
 "Deselect text by pressing enter after search
-nnoremap <CR> :noh<CR>
 nnoremap <leader>d :noh<CR>
 
 "Make Command-P not send a f@#$ing print job (Not sure this is working though - Javid)
@@ -32,3 +31,14 @@ command! -nargs=1 -range TabFirst exec <line1> . ',' . <line2> . 'Tabularize /^[
 " Turn off Attention message for swap files
 set shortmess+=A
 
+" Increment a block of selected numbers
+"  source: http://vim.wikia.com/wiki/Making_a_list_of_numbers
+function! Incr()
+  let a = line('.') - line("'<")
+  let c = virtcol("'<")
+  if a > 0
+    execute 'normal! '.c.'|'.a."\<C-a>"
+  endif
+  normal `<
+endfunction
+vnoremap <C-a> :call Incr()<CR>
