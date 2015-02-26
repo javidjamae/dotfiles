@@ -10,6 +10,7 @@ export PATH=/usr/local/bin:/Users/javid/.rvm/gems/ruby-2.0.0-p247/bin:/Users/jav
 source ~/.bash_prompt
 
 export PATH=/usr/local/sbin:$PATH
+export EDITOR=/usr/local/bin/mvim
 
 remote() {
   if [ $# -eq 0 ] ; then
