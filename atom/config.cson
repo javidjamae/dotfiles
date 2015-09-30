@@ -1,0 +1,11 @@
+"*":
+  "exception-reporting":
+    userId: "f9f42e70-d8e4-96be-f54f-2b6ae709c7cf"
+  welcome:
+    showOnStartup: false
+  core: {}
+  editor:
+    invisibles: {}
+  "vim-mode": {}
+  "atom-fuzzy-grep": {}
+  term2: {}

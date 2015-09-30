@@ -10,6 +10,12 @@ map <leader>W :%s/\s\+$//<cr>
 "Deselect text by pressing enter after search
 nnoremap <leader>d :noh<CR>
 
+" Smart way to move between windows. Ctrl-[h,j,k,l]
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
+nmap <C-l> <C-W>l
+
 "Make Command-P not send a f@#$ing print job (Not sure this is working though - Javid)
 map <D-p> :CtrlP<CR>
 imap <D-p> <ESC>:CtrlP<CR>
