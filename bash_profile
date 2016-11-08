@@ -1,16 +1,39 @@
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home
+#################
+# ENV Variables #
+#################
+export PATH=/usr/local/bin:$PATH
+export PATH=/sbin:$PATH
+export PATH=/usr/sbin:$PATH
+export PATH=/bin:$PATH
+export PATH=/usr/bin:$PATH
+export PATH=$HOME/.rvm/bin:$PATH
+export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
 
-# For Kestrel
-export STAGE=development
+export EDITOR=/usr/local/bin/mvim
 
+#######
+# RVM #
+#######
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-export PATH=/usr/local/bin:/Users/javid/.rvm/gems/ruby-2.0.0-p247/bin:/Users/javid/.rvm/gems/ruby-2.0.0-p247@global/bin:/Users/javid/.rvm/rubies/ruby-2.0.0-p247/bin:/Users/javid/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
+##########
+# Prompt #
+##########
 source ~/.bash_prompt
 
-export PATH=/usr/local/sbin:$PATH
-export EDITOR=/usr/local/bin/mvim
+###########
+# thefuck #
+###########
+eval "$(thefuck --alias)" # https://github.com/nvbn/thefuck #
+
+########
+# TOUT #
+########
+# For Kestrel
+export STAGE=development # for kestrel
 
 remote() {
   if [ $# -eq 0 ] ; then
