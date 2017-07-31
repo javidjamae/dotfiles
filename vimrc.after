@@ -52,3 +52,11 @@ vnoremap <C-a> :call Incr()<CR>
 " select pasted text
 " http://vim.wikia.com/wiki/Selecting_your_pasted_text
 nnoremap gp `[v`]
+
+" Setup Syntastic with eslint for Javascript lint
+" http://remarkablemark.org/blog/2016/09/28/vim-syntastic-eslint/
+" let g:syntastic_javascript_checkers=['eslint']
+
+" Ale - lint / formatting tool
+let g:ale_fixers = { 'javascript' : [ 'eslint' ] }
+map <leader>x :ALEFix<cr>
