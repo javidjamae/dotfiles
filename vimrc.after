@@ -60,3 +60,7 @@ nnoremap gp `[v`]
 " Ale - lint / formatting tool
 let g:ale_fixers = { 'javascript' : [ 'eslint' ] }
 map <leader>x :ALEFix<cr>
+
+" Make sure vim isn't slow on refocus
+" https://stackoverflow.com/questions/27347931/disable-root-node-refresh-on-window-focus
+autocmd! AuNERDTreeCmd FocusGained
