@@ -1,3 +1,6 @@
+"Sort
+map <leader>s :sort<cr>
+
 "Find the currently selected file in the NERDTree window
 map <leader>f :NERDTreeFind<cr>
 
