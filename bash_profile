@@ -33,7 +33,8 @@ eval "$(thefuck --alias)" # https://github.com/nvbn/thefuck #
 # Git #
 #######
 git-prune() {
-  git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d
+  #git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d
+  git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -d
 }
 
 export NVM_DIR="$HOME/.nvm"
