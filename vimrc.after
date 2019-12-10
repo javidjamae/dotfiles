@@ -11,7 +11,10 @@ map <leader>w :s/\s\+$//<cr>
 map <leader>W :%s/\s\+$//<cr>
 
 "Deselect text by pressing enter after search
-nnoremap <leader>d :noh<CR>
+nnoremap <leader>d :noh<cr>
+
+"Close all buffers but the last one
+map <leader>c :%bd\|e#<cr>
 
 " Smart way to move between windows. Ctrl-[h,j,k,l]
 nmap <C-j> <C-W>j

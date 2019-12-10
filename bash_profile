@@ -29,44 +29,11 @@ source ~/.bash_prompt
 ###########
 eval "$(thefuck --alias)" # https://github.com/nvbn/thefuck #
 
-########
-# TOUT #
-########
-# For Kestrel
-export STAGE=development # for kestrel
-
-remote() {
-  if [ $# -eq 0 ] ; then
-    echo "Usage: remote unit-env-name [optional-command]"
-    echo
-    echo "  Examples:"
-    echo "    Launch a remote shell:"
-    echo "      remote env-qa-kicktag"
-    echo
-    echo "    Run a remote rake task:"
-    echo "      remote env-qa-kicktag ./kicktag/bin/rake db:migrate:status"
-    echo
-    echo "    Run multiple remote commands:"
-    echo "      remote env-qa-kicktag \"bash -c 'cd kicktag; ./bin/console'\""
-    echo
-    return
-  fi
-  HOSTNAME=$1
-  shift
-  ssh jump -t "source /etc/profile; ssh-tag-host $HOSTNAME sudo -iu tout \"$@\""
-}
-
-console() {
-  if [ $# -eq 2 ] ; then
-    ssh jump -t "source /etc/profile; ssh-tag-host env-$1-$2 sudo -iu tout $2/bin/console"
-  else
-    echo "Usage: console environment unit"
-    echo
-    echo "  Examples:"
-    echo "    console qa kicktag"
-    echo "    console prod jigsaw"
-    echo
-  fi
+#######
+# Git #
+#######
+git-prune() {
+  git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d
 }
 
 export NVM_DIR="$HOME/.nvm"
