@@ -67,6 +67,14 @@ nnoremap gp `[v`]
 let g:ale_fixers = { 'javascript' : [ 'eslint' ] }
 map <leader>x :ALEFix<cr>
 
+" Silver Searcher
+" ," - Case insensitive search for contents of yanked register
+" ,' - Case sensitive search for contents of yanked register
+" ,` - Smart case search for contents of yanked register (sensitive unless string has uppercases)
+map <leader>" :Ag! -iQ "<C-r>""<CR>
+map <leader>' :Ag! -sQ "<C-r>""<CR>
+map <leader>` :Ag! -sS "<C-r>""<CR>
+
 " Make sure vim isn't slow on refocus
 " https://stackoverflow.com/questions/27347931/disable-root-node-refresh-on-window-focus
 autocmd! AuNERDTreeCmd FocusGained
