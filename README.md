@@ -45,7 +45,7 @@ plugins. Install macvim using brew, then follow the Janus installation instructi
 
 # Keyboard Mappings
 
-I make `Caps Lock` behace as `Control` to make vim easier to work with.
+I make `Caps Lock` behave as `Control` to make vim easier to work with.
 
 System Preferences -> Keyboard -> Keyboard -> Modifier Keys
 - Caps Lock ==> ^ Control
