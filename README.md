@@ -5,11 +5,12 @@ about how I set up my machine / environment.
 
 # Installation
 
-Clone this repository into your `~` directory.
+1) Clone this repository into your `~` directory.
 
-Run `./install.sh`, which will:
-1) Copy the existing dotfiles in `~` into a folder called `~/dotfiles_old`
-2) Create new symlinks for all the dotfiles in `~` that point to the files in `~/dotfiles`
+2) Run `./install.sh`, which will:
+- Copy the existing dotfiles in `~` into a folder called `~/dotfiles_old`
+- Create new symlinks for all the dotfiles in `~` that point to the files in `~/dotfiles`
+
 3) Restart your terminal
 
 # Homebrew
