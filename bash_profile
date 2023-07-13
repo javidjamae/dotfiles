@@ -11,6 +11,8 @@ export PATH=/usr/bin:$PATH
 export PATH=$HOME/.rvm/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
+export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/sbin:$PATH
 
 export EDITOR=/usr/local/bin/mvim
 
