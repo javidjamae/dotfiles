@@ -1,3 +1,6 @@
 let mapleader = ","
 call janus#disable_plugin('csv')
 call janus#disable_plugin('syntastic')
+
+" Configure Ag Silver Searcher as the search tool instead of grep
+set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep
