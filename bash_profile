@@ -3,6 +3,12 @@
 #################
 # ENV Variables #
 #################
+
+# Start in workspace directory if in Cursor
+if [[ -n "$VSCODE_INJECTION" ]] || [[ -n "$CURSOR_AGENT" ]]; then
+    cd "${VSCODE_WORKSPACE_FOLDER:-/Users/javidjamae/code/ssk-core}" 2>/dev/null || true
+fi
+
 export PATH=/usr/local/bin:$PATH
 export PATH=/sbin:$PATH
 export PATH=/usr/sbin:$PATH
@@ -17,7 +23,6 @@ export PATH=/opt/homebrew/anaconda3/bin:$PATH
 export PATH=/opt/homebrew/opt/postgresql@15/bin:$PATH
 export PATH=/usr/local/texlive/2024/bin/universal-darwin:$PATH
 export PATH=$HOME/.local/bin:$PATH
-
 
 export EDITOR=/usr/local/bin/mvim
 
@@ -86,9 +91,14 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+# Google Cloud SDK
+if [ -f '/Users/javidjamae/code/suga-content-generation-bot/google-cloud-sdk/path.bash.inc' ]; then 
+    . '/Users/javidjamae/code/suga-content-generation-bot/google-cloud-sdk/path.bash.inc'
+fi
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/javidjamae/code/suga-content-generation-bot/google-cloud-sdk/path.bash.inc' ]; then . '/Users/javidjamae/code/suga-content-generation-bot/google-cloud-sdk/path.bash.inc'; fi
+if [ -f '/Users/javidjamae/code/suga-content-generation-bot/google-cloud-sdk/completion.bash.inc' ]; then 
+    . '/Users/javidjamae/code/suga-content-generation-bot/google-cloud-sdk/completion.bash.inc'
+fi
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/javidjamae/code/suga-content-generation-bot/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/javidjamae/code/suga-content-generation-bot/google-cloud-sdk/completion.bash.inc'; fi
+# CRITICAL: This ensures bash 5.3.3 is used
+export SHELL=/opt/homebrew/bin/bash
