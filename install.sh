@@ -27,10 +27,19 @@ echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
 for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
+    target=~/.$file
+    # Skip if already symlinked correctly
+    if [ -L "$target" ] && [ "$(readlink "$target")" = "$dir/$file" ]; then
+        echo "$file is already symlinked correctly. Skipping."
+        continue
+    fi
+    # Back up real files (not symlinks) before replacing
+    if [ -e "$target" ] && [ ! -L "$target" ]; then
+        echo "Backing up ~/.$file to $olddir"
+        mv "$target" "$olddir/"
+    fi
     echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
+    ln -sf "$dir/$file" "$target"
 done
 
 ########## bin scripts
