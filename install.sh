@@ -32,3 +32,36 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+
+########## bin scripts
+echo "Installing ~/bin scripts..."
+mkdir -p ~/bin
+for script in $dir/bin/*; do
+    name=$(basename "$script")
+    ln -sf "$script" ~/bin/"$name"
+    chmod +x "$script"
+    echo "  Linked ~/bin/$name"
+done
+
+########## LaunchAgents (macOS only)
+if [[ "$(uname)" == "Darwin" ]]; then
+    echo "Installing LaunchAgents..."
+
+    # rumps is required for the menu bar app
+    if ! python3 -c "import rumps" 2>/dev/null; then
+        echo "  Installing rumps..."
+        pip3 install rumps --quiet
+    fi
+
+    mkdir -p ~/Library/LaunchAgents
+    for template in $dir/launchagents/*.plist.template; do
+        name=$(basename "$template" .template)
+        dest=~/Library/LaunchAgents/"$name"
+        # unload first in case it's already registered
+        launchctl unload "$dest" 2>/dev/null
+        # substitute __HOME__ with the actual home path (launchd can't expand $HOME)
+        sed "s|__HOME__|$HOME|g" "$template" > "$dest"
+        launchctl load "$dest"
+        echo "  Loaded $name"
+    done
+fi

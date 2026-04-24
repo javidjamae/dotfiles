@@ -4,7 +4,7 @@ bashcompinit
 autoload -Uz compinit
 compinit
 
-exec bash
+exec bash -l
 
 source ~/.bash_profile
 source ~/.bashrc
