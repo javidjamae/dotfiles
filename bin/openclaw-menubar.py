@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
+import os
 import subprocess
 import AppKit
 import rumps
+
+TUNNEL_PLIST = os.path.expanduser("~/Library/LaunchAgents/com.user.openclaw-tunnel.plist")
 
 
 def tunnel_is_running():
@@ -40,7 +43,7 @@ class OpenClawMenuBar(rumps.App):
 
     def start_tunnel(self, _):
         subprocess.Popen(
-            ["launchctl", "start", "com.user.openclaw-tunnel"],
+            ["launchctl", "load", TUNNEL_PLIST],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
@@ -48,7 +51,7 @@ class OpenClawMenuBar(rumps.App):
 
     def stop_tunnel(self, _):
         subprocess.Popen(
-            ["launchctl", "stop", "com.user.openclaw-tunnel"],
+            ["launchctl", "unload", TUNNEL_PLIST],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )

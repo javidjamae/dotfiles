@@ -68,8 +68,9 @@ if [[ "$(uname)" == "Darwin" ]]; then
         dest=~/Library/LaunchAgents/"$name"
         # unload first in case it's already registered
         launchctl unload "$dest" 2>/dev/null
-        # substitute __HOME__ with the actual home path (launchd can't expand $HOME)
-        sed "s|__HOME__|$HOME|g" "$template" > "$dest"
+        # substitute placeholders (launchd can't expand variables)
+        PYTHON3_PATH=$(which python3)
+        sed -e "s|__HOME__|$HOME|g" -e "s|__PYTHON3__|$PYTHON3_PATH|g" "$template" > "$dest"
         launchctl load "$dest"
         echo "  Loaded $name"
     done
